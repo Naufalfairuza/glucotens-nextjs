@@ -1,0 +1,285 @@
+cat > src/assets/styles/main.css << 'EOF'
+:root {
+  font-family: "Poppins", sans-serif;
+  --primary: #5039d7;
+  --sec: #e6681a;
+  --tr: #eaeaea;
+  --fonttekanandarah: #ebd3d3;
+}
+
+body {
+  padding-top: 56px;
+}
+
+.close-btn {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.myPurple {
+  color: #6610f2;
+}
+
+.col-md-2,
+.col-md-4,
+.col-md-5 {
+  margin-bottom: 20px;
+}
+
+.gluco {
+  color: #6610f2;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.tens {
+  color: black;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.glucodrop {
+  color: #6610f2;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.tensdrop {
+  color: black;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.titlenav {
+  margin-left: 240px;
+  text-decoration: none;
+}
+
+.titledrop {
+  margin-left: 60px;
+  text-decoration: none;
+}
+
+.nav-link.btn.btn-login {
+  background-color: #6610f2;
+  color: white;
+  border: 2px solid #6610f2;
+  border-radius: 5px;
+  padding: 5px 10px;
+  text-decoration: none;
+  width: 130px;
+}
+
+.nav-link.btn.btn-signup {
+  background-color: transparent;
+  color: inherit;
+  border: 2px solid #6610f2;
+  border-radius: 5px;
+  padding: 5px 10px;
+  text-decoration: none;
+  width: 130px;
+}
+
+.grafik {
+  color: black;
+  font-weight: 700;
+}
+
+.gula-darah {
+  color: #e6681a;
+  font-weight: 700;
+}
+
+.modal-content .btn-close {
+  border: 2px solid black;
+  border-radius: 50%;
+  color: black;
+  width: 15px;
+  height: 25px;
+  line-height: 1.5;
+  padding: 0;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.modal-content .btn-close:hover {
+  background-color: #6610f2;
+  color: white;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.tekanandarah {
+  color: var(--sec);
+}
+
+.cardtekanandarah {
+  background-color: var(--primary);
+  border-radius: 20px;
+}
+
+.normal {
+  color: var(--fonttekanandarah);
+  font-size: 28px;
+}
+
+.tekananday {
+  color: var(--sec);
+  font-size: 24px;
+}
+
+.guladarah {
+  color: white;
+  font-size: 20px;
+}
+
+.catatantekanandarah {
+  font-size: 42px;
+  font-weight: bold;
+}
+
+.catatantekanandarah1 {
+  color: var(--sec);
+  font-size: 42px;
+  font-weight: bold;
+}
+
+.data {
+  font-weight: 500;
+}
+
+.labeltekanan {
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+}
+
+.labelCardiovascular {
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+}
+
+.form-control {
+  border: 1px solid;
+}
+
+.jadwal-makan {
+  font-size: 30px;
+  border-color: var(--sec);
+  background-color: white;
+  color: var(--sec);
+}
+
+.jadwal-makan:hover {
+  color: var(--sec);
+}
+
+.info {
+  color: white;
+  border: 1px solid;
+  border-color: var(--sec);
+  background-color: var(--sec);
+}
+
+.btn-simpan {
+  background-color: var(--sec);
+}
+
+.bg1 {
+  background-color: var(--primary);
+}
+
+.icons {
+  color: var(--sec);
+  background-color: white;
+  border-radius: 50%;
+  padding: 8px;
+}
+
+.help {
+  font-size: 16px;
+}
+
+.footer1 {
+  background-color: var(--primary);
+}
+
+.footer2 {
+  background-color: var(--tr);
+  color: black;
+}
+
+.copy {
+  background-color: #3b336c;
+}
+
+.beratbadan {
+  color: var(--sec);
+  font-size: 42px;
+  text-align: center;
+}
+
+.cek {
+  font-size: 42px;
+  text-align: center;
+}
+
+.bmi {
+  font-size: 18px;
+}
+
+.btn-detial {
+  background-color: var(--sec);
+  color: white;
+}
+
+.btn-outline {
+  border-color: var(--sec);
+  color: var(--sec);
+}
+
+.btnlkpr:hover {
+  border-color: #e6681a;
+  color: #e6681a;
+}
+
+.btn-showmore {
+  border-color: black;
+  background-color: white;
+}
+
+.hr-text {
+  line-height: 1em;
+  position: relative;
+  outline: 0;
+  border: 0;
+  color: black;
+  text-align: center;
+  height: 1.5em;
+  opacity: 0.5;
+}
+
+.hr-text:before {
+  content: "";
+  background: linear-gradient(to right, transparent, #818078, transparent);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+}
+
+.hr-text:after {
+  content: attr(data-content);
+  position: relative;
+  display: inline-block;
+  color: black;
+  padding: 0 0.5em;
+  line-height: 1.5em;
+  background-color: #fcfcfa;
+}
+EOF
