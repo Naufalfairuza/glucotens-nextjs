@@ -1,6 +1,8 @@
 import { SignIn, SignUp, SignedIn, SignedOut } from '@clerk/clerk-react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import GulaDarah from './pages/GulaDarah'
 import Home from './pages/Home'
+import TekananDarah from './pages/TekananDarah'; // ← ADD THIS
 
 // Placeholder components untuk pages yang belum diconvert
 const PlaceholderPage = ({ title }: { title: string }) => (
@@ -56,7 +58,7 @@ function App() {
           path="/gula-darah" 
           element={
             <ProtectedRoute>
-              <PlaceholderPage title="Gula Darah Tracking" />
+              <GulaDarah />
             </ProtectedRoute>
           } 
         />
@@ -64,7 +66,7 @@ function App() {
           path="/tekanan-darah" 
           element={
             <ProtectedRoute>
-              <PlaceholderPage title="Blood Pressure Tracking" />
+              <TekananDarah />
             </ProtectedRoute>
           } 
         />
