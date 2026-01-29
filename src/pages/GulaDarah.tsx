@@ -1,177 +1,130 @@
-import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip } from 'chart.js'
-import { useState } from 'react'
-import { Bar } from 'react-chartjs-2'
-import MealTimeButton from '../components/common/MealTimeButton'
+import { useEffect, useState } from 'react'
+import BloodSugarChart from '../components/bloodsugar/BloodSugarChart'
+import BloodSugarForm from '../components/bloodsugar/BloodSugarForm'
+import BloodSugarHistory from '../components/bloodsugar/BloodSugarHistory'
+import BloodSugarSummary from '../components/bloodsugar/BloodSugarSummary'
 import Footer from '../components/layout/Footer'
 import Navbar from '../components/layout/Navbar'
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
-
-const GulaDarah = () => {
-  const [mealTime, setMealTime] = useState<'pagi' | 'siang' | 'malam' | null>(null)
-  const [formData, setFormData] = useState({
-    tekananDarah: '',
-    tanggal: '',
-    pukul: '',
-    sebelum: '',
-    sesudah: '',
-  })
-
-  const chartData = {
-    labels: ['', '', '', '', '', ''],
-    datasets: [
-      {
-        label: 'Nilai 1',
-        backgroundColor: '#6cb9ad',
-        borderWidth: 1,
-        data: [3, 5, 4, 5, 6, 1],
-      },
-      {
-        label: 'Nilai 2',
-        backgroundColor: '#324ddd',
-        borderWidth: 1,
-        data: [4, 6, 6, 2, 4, 1],
-      },
-      {
-        label: 'Nilai 3',
-        backgroundColor: '#272a3e',
-        borderWidth: 1,
-        data: [2, 7, 6, 1, 2, 3],
-      },
-    ],
-  }
-
-  const chartOptions = {
-    scales: {
-      y: {
-        beginAtZero: true,
-        title: {
-          display: true,
-          text: 'Jumlah Gula Darah',
-          font: {
-            size: 15,
-          },
-        },
-      },
-    },
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log('Form Data:', formData, 'Meal Time:', mealTime)
-  }
-
-  return (
-    <>
-      <Navbar />
-      <div style={{ paddingTop: '80px' }}>
-        <div className="container mt-5">
-          <div className="text-center">
-            <h2>
-              Grafik <span className="tekanandarah">Gula Darah</span>
-            </h2>
-          </div>
-          <div style={{ width: '70%', marginLeft: '15%' }} className="my-5">
-            <Bar data={chartData} options={chartOptions} />
-          </div>
-          <div className="card w-50 border-0 cardtekanandarah mb-4" style={{ marginLeft: '25%' }}>
-            <div className="card-body row">
-              <div className="col-md-5">
-                <img src="/image/imgtekanandarah.png" width="203" alt="Tekanan Darah" />
-              </div>
-              <div className="col-md-7">
-                <h5 className="normal mt-5">Rerata Gula Darah Anda : </h5>
-                <p className="tekananday">100 mg/dl per day</p>
-                <p className="guladarah">Gula Darah Anda Tidak Normal</p>
-              </div>
-            </div>
-          </div>
-          <div className="text-center mt-5">
-            <h5 className="catatantekanandarah">
-              Catat <span className="catatantekanandarah1"> Gula Darah</span>
-            </h5>
-            <p className="data" style={{ fontWeight: 600, fontSize: '18px' }}>
-              Masukkan data gula darah anda perhari untuk <br />
-              memantau kondisi kadar gula dalam tubuh
-            </p>
-          </div>
-          <form onSubmit={handleSubmit}>
-            <div className="container">
-              <div className="row justify-content-center">
-                <div className="col-md-4">
-                  <div className="forminput mb-4">
-                    <label className="labeltekanan mb-2">Gula Darah</label>
-                    <input
-                      style={{ height: '55px', borderRadius: '10px' }}
-                      type="text"
-                      className="form-control p-2 w-60"
-                      placeholder="mg/dl"
-                      value={formData.tekananDarah}
-                      onChange={(e) => setFormData({ ...formData, tekananDarah: e.target.value })}
-                    />
-                  </div>
-                  <div className="forminput">
-                    <label className="labeltekanan mb-2">Pukul</label>
-                    <input
-                      style={{ height: '55px', borderRadius: '10px' }}
-                      type="time"
-                      className="form-control p-2"
-                      placeholder="hh/mm"
-                      value={formData.pukul}
-                      onChange={(e) => setFormData({ ...formData, pukul: e.target.value })}
-                    />
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="forminput mb-4">
-                    <label className="labeltekanan mb-2">Tanggal</label>
-                    <input
-                      style={{ height: '55px', borderRadius: '10px' }}
-                      type="date"
-                      className="form-control p-2"
-                      placeholder="dd/mm/yyyy"
-                      value={formData.tanggal}
-                      onChange={(e) => setFormData({ ...formData, tanggal: e.target.value })}
-                    />
-                  </div>
-                  <div className="forminput">
-                    <label className="labeltekanan mb-2">Detail Pengukuran</label>
-                    <div className="d-flex">
-                      <input
-                        type="text"
-                        style={{ height: '55px', borderRadius: '10px' }}
-                        className="form-control w-50 p-2 me-3"
-                        placeholder="sebelum"
-                        value={formData.sebelum}
-                        onChange={(e) => setFormData({ ...formData, sebelum: e.target.value })}
-                      />
-                      <input
-                        type="text"
-                        style={{ height: '55px', borderRadius: '10px' }}
-                        className="form-control w-50 p-2"
-                        placeholder="sesudah"
-                        value={formData.sesudah}
-                        onChange={(e) => setFormData({ ...formData, sesudah: e.target.value })}
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="row justify-content-center">
-                  <div className="col-md-6 text-center">
-                    <MealTimeButton selected={mealTime} onSelect={setMealTime} />
-                    <button className="btn btn-simpan text-white mt-5 px-5" type="submit">
-                      Simpan
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-      <Footer />
-    </>
-  )
+export interface BloodSugarRecord {
+  id: string
+  value: number
+  date: string
+  time: string
+  beforeAfter: 'before' | 'after'
+  mealTime: 'breakfast' | 'lunch' | 'dinner'
+  timestamp: number
 }
 
-export default GulaDarah
+export default function GulaDarah() {
+  const [records, setRecords] = useState<BloodSugarRecord[]>([])
+
+  // Load data dari localStorage saat pertama kali page dibuka
+  useEffect(() => {
+    const savedRecords = localStorage.getItem('bloodSugarRecords')
+    if (savedRecords) {
+      try {
+        const parsed = JSON.parse(savedRecords)
+        setRecords(parsed)
+      } catch (error) {
+        console.error('Error loading records:', error)
+      }
+    }
+  }, [])
+
+  const handleAddRecord = (record: Omit<BloodSugarRecord, 'id' | 'timestamp'>) => {
+    const newRecord: BloodSugarRecord = {
+      ...record,
+      id: Date.now().toString(),
+      timestamp: Date.now(),
+    }
+    const updatedRecords = [...records, newRecord]
+    setRecords(updatedRecords)
+    
+    // Save to localStorage
+    localStorage.setItem('bloodSugarRecords', JSON.stringify(updatedRecords))
+  }
+
+  const handleDeleteRecord = (id: string) => {
+    const updatedRecords = records.filter(record => record.id !== id)
+    setRecords(updatedRecords)
+    
+    // Update localStorage
+    localStorage.setItem('bloodSugarRecords', JSON.stringify(updatedRecords))
+  }
+
+  const handleExportCSV = () => {
+    if (records.length === 0) {
+      alert('Belum ada data untuk di-export!')
+      return
+    }
+
+    // Prepare CSV content
+    const headers = ['Tanggal', 'Waktu', 'Kadar Gula Darah (mg/dl)', 'Sebelum/Sesudah', 'Waktu Makan']
+    const rows = records.map(record => [
+      record.date,
+      record.time,
+      record.value,
+      record.beforeAfter === 'before' ? 'Sebelum' : 'Sesudah',
+      record.mealTime === 'breakfast' ? 'Pagi' : record.mealTime === 'lunch' ? 'Siang' : 'Malam'
+    ])
+
+    const csvContent = [
+      headers.join(','),
+      ...rows.map(row => row.join(','))
+    ].join('\n')
+
+    // Download CSV
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' })
+    const link = document.createElement('a')
+    const url = URL.createObjectURL(blob)
+    link.setAttribute('href', url)
+    link.setAttribute('download', `gula-darah-${new Date().toISOString().split('T')[0]}.csv`)
+    link.style.visibility = 'hidden'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
+  // Calculate average
+  const calculateAverage = () => {
+    if (records.length === 0) return 0
+    const sum = records.reduce((acc, record) => acc + record.value, 0)
+    return Math.round(sum / records.length)
+  }
+
+  const average = calculateAverage()
+
+  return (
+    <div>
+      <Navbar />
+      
+      <div className="container mt-5">
+        {/* Header */}
+        <div className="text-center">
+          <h2 className="grafik">
+            Grafik <span className="gula-darah">Gula Darah</span>
+          </h2>
+        </div>
+
+        {/* Chart Section */}
+        <BloodSugarChart records={records} />
+
+        {/* Summary Card */}
+        <BloodSugarSummary average={average} />
+
+        {/* Form Section */}
+        <BloodSugarForm onSubmit={handleAddRecord} />
+
+        {/* History Section */}
+        <BloodSugarHistory 
+          records={records} 
+          onDelete={handleDeleteRecord}
+          onExport={handleExportCSV}
+        />
+      </div>
+
+      <Footer />
+    </div>
+  )
+}
